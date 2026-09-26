@@ -143,44 +143,46 @@ The trained model was then used to predict the 12,000 rows in `validation.csv`.
 
 The resulting file contains exactly two columns:
 
-```text
-load_id,predicted_rate
-The final prediction file contains 12,000 rows.
-
-December Prediction Scenario
+## December Prediction Scenario
 
 The assessment provides a fixed December scenario for visualization.
 
 The fixed inputs are:
 
-Pickup: Lexington
-Delivery: Fort Wayne
-Distance: 360 miles
-Equipment: Dry Van
-Weight: 32,000 lb
-Date: December 1 to December 31, 2025
+- **Pickup:** Lexington
+- **Delivery:** Fort Wayne
+- **Distance:** 360 miles
+- **Equipment:** Dry Van
+- **Weight:** 32,000 lb
+- **Date:** December 1 to December 31, 2025
 
 Only the date changes between predictions.
 
 The provided scoring script was used to validate these predictions and generate the December chart.
 
-Output Validation
+### December Prediction Chart
+
+<img src="scorer_results/candidate_december.png" alt="December 2025 predicted load rate chart" width="900">
+
+## Output Validation
 
 The provided scoring script successfully validated:
 
-12,000 final validation predictions
-31 December predictions
-prediction IDs
-prediction column names
-prediction row count
-positive prediction values
-December dates and fixed input values
+- 12,000 final validation predictions
+- 31 December predictions
+- Prediction IDs
+- Prediction column names
+- Prediction row count
+- Positive prediction values
+- December dates and fixed input values
 
 The generated chart is available at:
 
-scorer_results/candidate_december.png
+`scorer_results/candidate_december.png`
 
-Project Structure
+## Project Structure
+
+```text
 freight-rate-ml-assessment/
 │
 ├── model.py
@@ -189,6 +191,7 @@ freight-rate-ml-assessment/
 ├── score.py
 ├── requirements.txt
 ├── README.md
+├── .gitignore
 │
 ├── train-test.csv
 ├── validation.csv
@@ -200,34 +203,3 @@ freight-rate-ml-assessment/
 │   └── candidate_december.png
 │
 └── freight-rate-ml-assessment.pdf
-Running the Project
-
-Create and activate the virtual environment, then install the dependencies:
-
-pip install -r requirements.txt
-
-Run the final model:
-
-python model.py
-
-Generate the December prediction inputs:
-
-python december_pred.py
-
-Validate the final outputs and generate the December chart:
-
-python score.py --predictions validation_predictions.csv --december-predictions december_chart_inputs.csv
-
-A successful scoring run validates the 12,000 final predictions and the 31 December predictions.
-
-Final Files
-
-The main submission files are:
-
-validation_predictions.csv
-
-freight-rate-ml-assessment.pdf
-
-scorer_results/candidate_december.png
-
-The final prediction metrics for the 12,000 validation loads are calculated by the assessment platform because the ground truth posted_rate values for those loads are not provided.
